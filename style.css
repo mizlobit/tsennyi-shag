@@ -63,3 +63,41 @@ dialog{max-width:calc(100vw - 20px);overscroll-behavior:contain}
  .card-image{padding:10px}
  .card-label h3{font-size:16px}
 }
+
+
+/* Strict viewport containment: iPhone and embedded Safari */
+:root{overflow-x:hidden}
+html,body{min-width:0;width:100%;max-width:100%;overflow-x:hidden}
+main,main>*,header,footer{max-width:100%;min-width:0}
+.collection{width:100%;overflow:hidden}
+.collection .section-top,.collection .filters,.collection .card-grid{max-width:100%;min-width:0}
+.card-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
+.card-image,.card-label,.card-label h3{min-width:0}
+.card-label h3{overflow-wrap:anywhere}
+.hero{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+.about{grid-template-columns:minmax(0,1fr) minmax(0,2.6fr)}
+.two-text{grid-template-columns:repeat(2,minmax(0,1fr))}
+.author{grid-template-columns:repeat(2,minmax(0,1fr))}
+.viewer-layout{grid-template-columns:repeat(2,minmax(0,1fr))}
+@media(max-width:900px){.card-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.about{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:600px){
+ html,body{position:relative}
+ header{width:88%;max-width:88%;margin-inline:auto}
+ .hero{display:flex;flex-direction:column;width:100%;max-width:100%}
+ .hero-copy,.hero-art{width:100%;max-width:100%}
+ .section{width:100%;max-width:100%}
+ .collection{padding-inline:6%}
+ .card-grid{display:grid;width:100%;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 12px}
+ .card{display:block;width:100%;max-width:100%;overflow:hidden}
+ .card-image{width:100%;max-width:100%;padding:12px;aspect-ratio:.81}
+ .card img{display:block;max-width:100%;width:100%;height:100%}
+ .card-label{width:100%;gap:5px}
+ .card-label h3{font-size:clamp(15px,4.5vw,20px);line-height:1.2}
+ .filters{width:100%;flex-wrap:wrap}
+ .filters button{max-width:100%}
+ .about,.author,.two-text,.viewer-layout{grid-template-columns:minmax(0,1fr)}
+ .viewer-layout>*{min-width:0}
+ .viewer-image{width:100%;overflow:hidden}
+ .hero-art .orbit{width:100%}
+}
+@media(max-width:360px){.collection{padding-inline:5%}.card-grid{gap:20px 9px}.card-image{padding:9px}}
