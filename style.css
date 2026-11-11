@@ -282,3 +282,19 @@ footer .brand-card-icon{width:28px;height:40px}
  .ribbon{grid-template-columns:minmax(0,1fr);gap:8px}
  .ribbon b{display:none}
 }
+
+
+/* Author artwork: 3D card-back reveal, using the original deck reverse */
+.author-image{position:relative;isolation:isolate;perspective:1100px;padding:45px 24px 24px}
+.author-image::before{content:"";position:absolute;z-index:-1;top:6%;left:50%;width:67%;height:78%;border-radius:22px;background:url('assets/back.webp') center/cover no-repeat;border:5px solid rgba(255,255,255,.9);box-shadow:14px 22px 35px rgba(24,42,65,.24);transform:translateX(-32%) rotate(12deg) rotateY(-22deg);transform-origin:center;transition:transform .6s ease}
+.author-image>img{position:relative;z-index:1;width:78%;max-width:420px;display:block;margin:0 auto;transform:translateX(-10%) rotate(-7deg) rotateY(8deg);box-shadow:12px 22px 34px rgba(25,42,56,.2);border:4px solid rgba(255,255,255,.9);transition:transform .6s ease}
+.author-image:hover::before{transform:translateX(-24%) rotate(16deg) rotateY(-28deg)}
+.author-image:hover>img{transform:translateX(-14%) rotate(-9deg) rotateY(12deg)}
+.author-image>span{position:relative;z-index:2;display:block;text-align:center;margin:35px auto 0;font-size:15px;letter-spacing:.07em}
+@media(max-width:600px){
+ .author-image{padding:50px 18px 12px;overflow:visible}
+ .author-image::before{top:7%;left:50%;width:70%;height:74%;border-radius:18px;transform:translateX(-26%) rotate(10deg) rotateY(-18deg)}
+ .author-image>img{width:78%;transform:translateX(-10%) rotate(-6deg) rotateY(7deg)}
+ .author-image>span{font-size:14px;line-height:1.5;margin-top:38px}
+}
+@media(prefers-reduced-motion:reduce){.author-image::before,.author-image>img{transition:none}}
