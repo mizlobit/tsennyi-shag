@@ -101,3 +101,65 @@ main,main>*,header,footer{max-width:100%;min-width:0}
  .hero-art .orbit{width:100%}
 }
 @media(max-width:360px){.collection{padding-inline:5%}.card-grid{gap:20px 9px}.card-image{padding:9px}}
+
+
+/* Refined editorial glass UI and accessible typography */
+:root{--glass:rgba(255,255,255,.35);--glass-border:rgba(255,255,255,.7)}
+body{font-size:16px}
+p{line-height:1.75}
+.hero-copy>p,.author-copy p,.viewer-info p,.closing p,.step-grid p,.section-top>p,.practice p{font-size:clamp(16px,1.2vw,18px);line-height:1.75}
+.two-text{font-size:16px;line-height:1.75}
+.gallery-note,.soft-note{font-size:14px;line-height:1.75}
+.eyebrow{font-size:12px}
+.button,.filters button,.viewer-tabs button,.viewer-nav button{
+ border-radius:999px;
+ border:1px solid rgba(255,255,255,.65);
+ background:rgba(255,255,255,.25);
+ color:var(--ink);
+ -webkit-backdrop-filter:blur(16px) saturate(150%);
+ backdrop-filter:blur(16px) saturate(150%);
+ box-shadow:0 5px 22px rgba(31,57,46,.09),inset 0 1px 0 rgba(255,255,255,.65);
+ transition:background .25s,transform .25s,box-shadow .25s;
+}
+.button:hover,.filters button:hover,.viewer-tabs button:hover,.viewer-nav button:hover{background:rgba(255,255,255,.55);color:var(--ink);transform:translateY(-2px)}
+.filters .active,.viewer-tabs .active{background:rgba(38,62,55,.88);color:#fff;border-color:rgba(255,255,255,.45)}
+.button{font-size:15px;min-height:54px;justify-content:center;gap:18px}
+.text-link{font-size:15px}
+.hero-main,.hero-side{border-radius:24px 70px 28px 65px;overflow:hidden}
+.hero-main{border-radius:30% 8% 28% 9%}
+.hero-side{border-radius:9% 28% 8% 30%}
+.card-image{border-radius:24px 24px 38px 38px}
+.card img{border-radius:18px 18px 30px 30px}
+.draw-card img{border-radius:24px}
+.author-image img{border-radius:48% 48% 22px 22px}
+#turnCard img,#originalImage{border-radius:22px}
+.viewer-tabs button,.viewer-nav button{font-size:14px}
+.practice label,.rotate-label{font-size:15px}
+.practice input{font-size:16px}
+.gallery-note,.soft-note,.closing>small{max-width:100%}
+@media(max-width:600px){
+ .hero-copy>p,.author-copy p,.viewer-info p,.closing p,.step-grid p,.section-top>p,.practice p,.two-text{font-size:16px;line-height:1.75}
+ .hero-copy>p br,.section-top>p br{display:none}
+ .gallery-note,.soft-note{font-size:14px}
+ .eyebrow{font-size:11px;line-height:1.6}
+ .button{font-size:15px;padding:15px 19px;min-height:54px}
+ .hero .actions{gap:12px}
+ .hero .actions .button{width:100%;justify-content:space-between}
+ .hero .actions .text-link{padding:12px 4px}
+ .text-link{font-size:14px}
+ .filters button{font-size:13px;padding:12px 16px;min-height:44px}
+ .card-label small{font-size:11px}
+ .card-label h3{font-size:clamp(17px,4.7vw,21px)}
+ .practice input{font-size:16px}
+ .draw-card img{border-radius:18px}
+ .closing .actions{width:100%;max-width:360px;margin-inline:auto}
+ .closing .button{width:100%;max-width:100%;justify-content:center}
+ .closing p{font-size:16px}
+ .closing>small{font-size:12px;line-height:1.6}
+ footer p,footer>a:last-child{font-size:13px}
+ .viewer-info small{font-size:12px}
+ .viewer-tabs button,.viewer-nav button{font-size:13px}
+}
+@media(prefers-reduced-transparency:reduce){
+ .button,.filters button,.viewer-tabs button,.viewer-nav button{background:#f7f8f3;-webkit-backdrop-filter:none;backdrop-filter:none;border-color:#cbd2c4}
+}
