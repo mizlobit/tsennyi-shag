@@ -171,3 +171,17 @@ header .brand{gap:11px}
 footer .brand{gap:10px}
 footer .brand-card-icon{width:28px;height:40px}
 @media(max-width:600px){header .brand-card-icon{width:29px;height:42px}footer .brand-card-icon{width:26px;height:37px}}
+
+
+/* Readability improvements for small header and hero handwritten note */
+@media(max-width:600px){
+ header .brand small{font-size:clamp(8px,2.15vw,10px);letter-spacing:.9px;line-height:1.35;margin-top:6px}
+ .hero .art-note{font-size:clamp(19px,5.1vw,24px);line-height:1.16;max-width:60%;right:0;top:-5px;transform:rotate(5deg);text-align:center;text-wrap:balance;text-shadow:0 1px 8px var(--paper)}
+ .hero-art{margin-top:20px}
+ .hero-main{top:15%}
+ .hero-side{top:20%}
+}
+@media(min-width:601px){
+ header .brand small{font-size:10px;letter-spacing:1.3px}
+ .art-note{font-size:clamp(22px,2vw,28px);line-height:1.15}
+}
