@@ -18,3 +18,33 @@ const viewer=document.querySelector('#viewer'),turn=document.querySelector('#tur
 grid.addEventListener('click',e=>{const b=e.target.closest('[data-index]');if(b)show(Number(b.dataset.index))});tabs.forEach(t=>document.querySelector('#'+t+'Btn').onclick=()=>setSide(t));document.querySelector('#angle').oninput=rotate;document.querySelector('#previous').onclick=()=>show(current-1);document.querySelector('#next').onclick=()=>show(current+1);document.querySelector('.close').onclick=()=>viewer.close();viewer.addEventListener('click',e=>{if(e.target===viewer){const r=viewer.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)viewer.close()}});viewer.addEventListener('keydown',e=>{if(e.target.tagName==='INPUT')return;if(e.key==='ArrowRight')show(current+1);if(e.key==='ArrowLeft')show(current-1)});
 let selection=[],chosen=null;const draw=document.querySelector('#drawCards'),result=document.querySelector('#drawResult');function shuffle(){selection=cards.map((_,i)=>i).sort(()=>Math.random()-.5).slice(0,3);chosen=null;result.hidden=true;draw.innerHTML=selection.map((_,i)=>`<button class="draw-card" data-pick="${i}" aria-label="Открыть карту ${i+1}"><img src="assets/back.webp" alt="Закрытая карта"><span>${i+1}</span></button>`).join('')}shuffle();draw.addEventListener('click',e=>{const b=e.target.closest('[data-pick]');if(!b)return;const i=Number(b.dataset.pick);chosen=selection[i];const c=cards[chosen];b.querySelector('img').src=`assets/${c.image}.webp`;b.querySelector('img').alt=c.title;b.querySelector('span').textContent='';result.hidden=false;result.innerHTML=`<div class="eyebrow">ВАШ ОБРАЗ ДЛЯ РАЗМЫШЛЕНИЯ</div><div class="question-echo"></div><h3>${c.title}</h3><p>${c.text}</p><p><strong>${c.prompt}</strong></p><button class="text-link" id="inspectDraw">Рассмотреть карту со всех сторон ↗</button><small>Образ выбран случайно. Его личный смысл определяете вы.</small>`;const q=document.querySelector('#question').value.trim();result.querySelector('.question-echo').textContent=q?'Ваш вопрос: '+q:'';document.querySelector('#inspectDraw').onclick=()=>show(chosen);result.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth',block:'nearest'})});document.querySelector('#shuffle').onclick=shuffle;
 const observer=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target)}}),{threshold:.08});document.querySelectorAll('.reveal').forEach(e=>observer.observe(e));
+
+
+/* Touch navigation and card flip for mobile */
+(function(){
+  let startX=0,startY=0,started=false;
+  const surface=document.querySelector('.viewer-image');
+  surface.addEventListener('touchstart',e=>{
+    if(e.touches.length!==1)return;
+    startX=e.touches[0].clientX;startY=e.touches[0].clientY;started=true;
+  },{passive:true});
+  surface.addEventListener('touchend',e=>{
+    if(!started||!viewer.open||!e.changedTouches.length)return;
+    started=false;
+    const dx=e.changedTouches[0].clientX-startX;
+    const dy=e.changedTouches[0].clientY-startY;
+    if(Math.abs(dx)<55||Math.abs(dx)<Math.abs(dy)*1.3)return;
+    show(current+(dx<0?1:-1));
+  },{passive:true});
+  surface.addEventListener('touchcancel',()=>{started=false},{passive:true});
+  turn.addEventListener('click',()=>{
+    if(!viewer.open||side==='original')return;
+    document.querySelector('#angle').value=0;
+    setSide(side==='front'?'back':'front');
+  });
+  turn.style.cursor='pointer';
+  const shuffleButton=document.querySelector('#shuffle');
+  shuffleButton.addEventListener('click',()=>{
+    draw.querySelectorAll('.draw-card').forEach(b=>b.disabled=false);
+  });
+})();
