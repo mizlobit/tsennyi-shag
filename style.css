@@ -185,3 +185,35 @@ footer .brand-card-icon{width:28px;height:40px}
  header .brand small{font-size:10px;letter-spacing:1.3px}
  .art-note{font-size:clamp(22px,2vw,28px);line-height:1.15}
 }
+
+
+/* Unified readable secondary typography, especially on mobile */
+:root{--readable-muted:#59685e}
+.hero-foot,.gallery-note,.soft-note,.closing>small,.practice small,.viewer-info small,footer p,footer>a:last-child{color:var(--readable-muted)}
+.eyebrow,.art-caption,.scroll-hint,.ribbon,.card-label small,.section-top small,.author-image span,.hero-foot,.gallery-note,.soft-note,.practice label,.practice small,.draw-result .question-echo,.draw-result small,.closing>small,.viewer-info small,footer p,footer>a:last-child{font-size:clamp(13px,1vw,15px);line-height:1.55}
+.eyebrow,.art-caption,.scroll-hint,.ribbon,.author-image span{letter-spacing:.09em}
+.art-caption{gap:12px}
+.scroll-hint{font-weight:600}
+.ribbon{line-height:1.6;text-align:center}
+.ribbon span{overflow-wrap:anywhere}
+.card-label small{font-weight:600}
+.viewer-info small{line-height:1.65}
+@media(max-width:600px){
+ .eyebrow,.art-caption,.scroll-hint,.ribbon,.card-label small,.section-top small,.author-image span,.gallery-note,.soft-note,.practice label,.practice small,.draw-result .question-echo,.draw-result small,.closing>small,.viewer-info small,footer p,footer>a:last-child{font-size:13px;line-height:1.6;letter-spacing:.035em}
+ .eyebrow{font-size:13px;letter-spacing:.075em}
+ .art-caption{left:4%;right:4%;bottom:4px;max-width:92%;gap:10px;align-items:center}
+ .art-caption span{font-size:24px;flex-shrink:0}
+ .scroll-hint{position:relative;left:auto;bottom:auto;display:block;align-self:flex-start;width:100%;padding:8px 0 0;font-size:13px;line-height:1.5;letter-spacing:.055em}
+ .hero{padding-bottom:40px}
+ .ribbon{justify-content:center;gap:12px;padding:20px 6%;font-size:13px}
+ .ribbon span:first-child{flex:1;max-width:100%}
+ .ribbon b{font-size:22px;flex-shrink:0}
+ .hero-art{margin-bottom:10px}
+ .hero-foot{font-size:13px}
+ .gallery-note{font-size:14px}
+ .practice small,.closing>small,.viewer-info small{font-size:13px}
+ .section-top small{font-size:13px}
+ .author-image span{font-size:13px}
+ .card-label small{font-size:13px}
+ .ribbon span:nth-of-type(2),.ribbon b:last-child{display:none}
+}
