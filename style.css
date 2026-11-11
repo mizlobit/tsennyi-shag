@@ -217,3 +217,21 @@ footer .brand-card-icon{width:28px;height:40px}
  .card-label small{font-size:13px}
  .ribbon span:nth-of-type(2),.ribbon b:last-child{display:none}
 }
+
+
+/* Mobile header: readable navigation and subtitle without overflow */
+@media(max-width:600px){
+ header{height:auto;min-height:94px;padding:14px 0;gap:12px;flex-wrap:wrap;align-content:center}
+ header .brand{flex:1 1 100%;font-size:clamp(29px,7.2vw,36px);gap:14px;white-space:normal;line-height:1}
+ header .brand>span{min-width:0}
+ header .brand small{font-size:clamp(12px,3.1vw,14px);letter-spacing:.045em;line-height:1.4;margin-top:7px}
+ header .brand-card-icon{width:43px;height:60px;flex-shrink:0}
+ header nav{width:100%;display:flex;justify-content:flex-start;gap:12px;flex-wrap:wrap;margin-top:5px}
+ header nav a:nth-child(2),header nav a:nth-child(3){font-size:clamp(15px,4vw,17px);font-weight:600;padding:10px 14px;border:1px solid var(--line);border-radius:999px;min-height:44px;display:inline-flex;align-items:center}
+ header nav a:nth-child(1),header nav a:nth-child(4){display:none}
+ .hero{padding-top:30px}
+}
+@media(min-width:601px) and (max-width:900px){
+ header .brand small{font-size:12px}
+ header nav{font-size:14px}
+}
