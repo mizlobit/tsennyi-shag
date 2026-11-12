@@ -2,7 +2,7 @@
 (function(){
  const host=document.querySelector('#deck3d');
  if(!host||typeof cards==='undefined'||!cards.length)return;
- let active=0,flipped=true,tilt=0,start=null,hasEntered=false;
+ let active=0,flipped=false,tilt=0,start=null;
  const stage=host.querySelector('.deck3d-stage'),card=host.querySelector('.deck3d-card');
  const front=host.querySelector('.deck3d-front'),title=host.querySelector('.deck3d-title'),description=host.querySelector('.deck3d-description'),question=host.querySelector('.deck3d-question'),counter=host.querySelector('.deck3d-count'),flip=host.querySelector('.deck3d-flip');
  const reduced=matchMedia('(prefers-reduced-motion: reduce)');
@@ -20,10 +20,6 @@
  card.addEventListener('pointerleave',()=>{tilt=0;transform()});
  stage.addEventListener('click',e=>{if(stage.dataset.swiped==='1'){stage.dataset.swiped='';e.stopPropagation()}},true);
  render();
- // Match the back of the card shown at the end of the scroll scene.
- flipped=true;flip.textContent='Показать лицевую';transform();
- const io=new IntersectionObserver(entries=>{if(!entries[0].isIntersecting||hasEntered)return;hasEntered=true;io.disconnect();if(reduced.matches){flipped=false;flip.textContent='Перевернуть карту';transform();return}
- setTimeout(()=>{if(!document.contains(host))return;flipped=false;flip.textContent='Перевернуть карту';transform()},420);
- },{threshold:.35});
- io.observe(host);
+ host.gallerySetFace=(back)=>{flipped=back;tilt=0;flip.textContent=back?'Показать лицевую':'Перевернуть карту';transform()};
+ host.galleryRefresh=()=>render();
 })();
