@@ -24,3 +24,16 @@
 @media(max-width:700px){.story-bridge-visual .shared-bridge-card{width:min(47%,220px)}}
 @media(max-width:380px){.story-bridge-visual .shared-bridge-card{width:min(48%,175px)}}
 @media(prefers-reduced-motion:reduce){.story-bridge-visual .shared-bridge-card{transition:none!important}}
+
+/* Mobile layout fix: no viewport-height spacer between story and gallery */
+@media(max-width:700px){
+ .story-bridge{height:auto!important;min-height:0!important}
+ .story-bridge-sticky{position:relative!important;top:auto!important;height:auto!important;min-height:0!important;display:flex!important;flex-direction:column;align-items:stretch;gap:16px;padding:36px 6% 28px!important;overflow:visible}
+ .story-bridge-copy{width:100%;max-width:none}
+ .story-bridge-visual{height:clamp(290px,85vw,390px)!important;min-height:0!important;max-height:none!important;flex:0 0 auto}
+ .story-bridge-visual .shared-bridge-card{width:min(47%,205px)}
+ .story-bridge-footer{position:static!important;display:block;margin-top:2px;font-size:12px;line-height:1.5}
+ #collection{padding-top:0!important}
+ #collection .deck3d{margin-top:0!important}
+}
+@media(max-width:380px){.story-bridge-visual{height:280px!important}}
