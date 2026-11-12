@@ -16,3 +16,11 @@
 @media(max-width:700px){.story-bridge{height:125vh}.story-bridge-sticky{grid-template-columns:minmax(0,1fr);grid-template-rows:auto minmax(0,1fr);gap:0;min-height:0;padding:45px 6% 70px}.story-bridge-copy h2{font-size:clamp(37px,9vw,53px);margin-bottom:14px}.story-bridge-copy p{font-size:16px;line-height:1.6}.story-bridge-visual{height:100%;min-height:240px;max-height:440px}.story-bridge-card{width:min(47%,220px)}.story-bridge-footer{left:6%;bottom:20px}}
 @media(max-width:380px){.story-bridge-sticky{padding-top:25px}.story-bridge-copy h2{font-size:35px}.story-bridge-visual{min-height:200px}.story-bridge-card{width:min(48%,175px)}}
 @media(prefers-reduced-motion:reduce){.story-bridge{height:auto}.story-bridge-sticky{position:relative;height:auto;min-height:560px}.story-bridge-card{transform:rotate(-5deg) scale(1);will-change:auto}.story-bridge-halo{transform:none}.story-bridge-copy .bridge-line:after{transform:none}}
+
+/* Single shared DOM card, reparented into the gallery */
+.story-bridge-visual .shared-bridge-card{width:min(65%,290px);aspect-ratio:.7;position:relative;z-index:2;transition:none!important;transform-style:preserve-3d;filter:drop-shadow(12px 25px 18px #243b3240)}
+.story-bridge-visual .shared-bridge-card img{object-fit:contain;border-radius:13px}
+.story-bridge-visual .shared-bridge-card:focus-visible{outline:3px solid var(--purple);outline-offset:7px}
+@media(max-width:700px){.story-bridge-visual .shared-bridge-card{width:min(47%,220px)}}
+@media(max-width:380px){.story-bridge-visual .shared-bridge-card{width:min(48%,175px)}}
+@media(prefers-reduced-motion:reduce){.story-bridge-visual .shared-bridge-card{transition:none!important}}
