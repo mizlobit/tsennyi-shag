@@ -1,0 +1,20 @@
+/* 3D collection showcase — progressive enhancement */
+.deck3d{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(260px,.85fr);gap:clamp(24px,5vw,80px);align-items:center;margin:32px 0 52px;padding:clamp(20px,4vw,55px);border:1px solid #cbd5c7;border-radius:28px;background:radial-gradient(ellipse at 32% 42%,#f7f7ef 0%,#e2e9dd 68%,#dce5d8 100%);overflow:hidden}
+.deck3d-stage{height:clamp(380px,42vw,530px);display:grid;place-items:center;perspective:1200px;touch-action:pan-y;position:relative;isolation:isolate}
+.deck3d-stage:before{content:"";position:absolute;width:85%;aspect-ratio:1;border:1px solid #c5d0c1;border-radius:50%;box-shadow:0 0 0 36px #fff3;z-index:-1}
+.deck3d-card{position:relative;width:min(68%,280px);aspect-ratio:.7;transform-style:preserve-3d;transition:transform .7s cubic-bezier(.2,.75,.2,1);cursor:pointer;filter:drop-shadow(12px 22px 16px #293c3040);border:0;background:none;padding:0}
+.deck3d-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;border-radius:12px;backface-visibility:hidden;-webkit-backface-visibility:hidden}
+.deck3d-card img:last-child{transform:rotateY(180deg)}
+.deck3d-card:focus-visible{outline:3px solid var(--purple);outline-offset:8px}
+.deck3d-copy .eyebrow{margin-bottom:14px}
+.deck3d-copy h3{font-size:clamp(38px,4vw,58px);margin:0 0 12px;line-height:1}
+.deck3d-copy p{font-size:16px;line-height:1.75;color:#59685e}
+.deck3d-question{border-left:2px solid #9aa99b;padding-left:16px;margin:22px 0}
+.deck3d-actions{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:22px}
+.deck3d-actions button{border:1px solid #aebcaf;background:#f6f8f1;color:var(--ink);border-radius:999px;min-height:46px;padding:10px 18px;font-size:15px;cursor:pointer}
+.deck3d-actions button:hover{background:#fff}
+.deck3d-count{font-size:14px;color:#59685e;font-variant-numeric:tabular-nums}
+.deck3d-help{font-size:13px!important;margin-top:16px}
+@media(max-width:700px){.deck3d{grid-template-columns:minmax(0,1fr);gap:4px;padding:20px 18px 28px}.deck3d-stage{height:390px}.deck3d-card{width:min(63%,245px)}.deck3d-copy h3{font-size:40px}.deck3d-copy p{font-size:16px}.deck3d-actions{gap:8px}.deck3d-actions button{padding:10px 14px}}
+@media(max-width:380px){.deck3d-stage{height:340px}.deck3d-card{width:65%}}
+@media(prefers-reduced-motion:reduce){.deck3d-card{transition:none}}
