@@ -18,3 +18,10 @@
 @media(max-width:700px){.deck3d{grid-template-columns:minmax(0,1fr);gap:4px;padding:20px 18px 28px}.deck3d-stage{height:390px}.deck3d-card{width:min(63%,245px)}.deck3d-copy h3{font-size:40px}.deck3d-copy p{font-size:16px}.deck3d-actions{gap:8px}.deck3d-actions button{padding:10px 14px}}
 @media(max-width:380px){.deck3d-stage{height:340px}.deck3d-card{width:65%}}
 @media(prefers-reduced-motion:reduce){.deck3d-card{transition:none}}
+
+/* Visual handoff: gallery continues the bridge's card-back reveal */
+#collection{padding-top:0}
+#collection .deck3d{margin-top:0;margin-bottom:clamp(35px,6vw,85px);border-top-left-radius:0;border-top-right-radius:0;border-top:0;background:linear-gradient(180deg,#e9ede3 0%,#e5ebdf 55%,#e0e9db 100%)}
+#collection .section-top{margin-bottom:26px}
+#collection .deck3d-stage:before{box-shadow:0 0 0 36px #fff2}
+@media(max-width:700px){#collection .deck3d{margin-inline:-6.82%;padding-inline:6%;border-radius:0 0 24px 24px}#collection .deck3d-stage{height:350px}}
