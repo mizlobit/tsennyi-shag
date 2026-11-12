@@ -18,6 +18,7 @@
   card.getAnimations().forEach(a=>{if(a.id==='shared-transfer')a.cancel()});
   if(mode==='gallery'){
    card.classList.remove('shared-bridge-card');
+   gallery.galleryRefresh?.();
    card.style.removeProperty('transform');
    parent.appendChild(card);
    gallery.gallerySetFace?.(true);
@@ -28,6 +29,7 @@
    inGallery=false;
    hasRevealed=false;
    gallery.gallerySetFace?.(false);
+   const image=card.querySelector('.deck3d-front');if(image){image.src='assets/ecstasy.webp';image.alt='Акварельная карта с радужными крыльями'}
    card.style.transform='rotateY('+Math.round(progress()*180)+'deg) rotateZ('+((1-progress())*-9)+'deg)';
   }
   const now=card.getBoundingClientRect();
@@ -57,6 +59,7 @@
  }
  function onScroll(){if(!ticking){ticking=true;requestAnimationFrame(update)}}
  visual.appendChild(card);
+ const firstImage=card.querySelector('.deck3d-front');if(firstImage){firstImage.src='assets/ecstasy.webp';firstImage.alt='Акварельная карта с радужными крыльями'}
  card.classList.add('shared-bridge-card');
  card.style.transform='rotateY(0deg) rotateZ(-9deg) scale(.75)';
  addEventListener('scroll',onScroll,{passive:true});
